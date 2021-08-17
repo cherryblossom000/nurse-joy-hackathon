@@ -50,6 +50,18 @@
 <main>
   <h1>Palet Town Hopsital</h1>
   <table class="patients">
+    <tr>
+      <th>Urgency</th>
+      <th>Name</th>
+      <th>Injury</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Height</th>
+      <th>Weight</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Address</th>
+    </tr>
     {#each patients as patient}
       <PatientView {patient} />
     {/each}
@@ -70,7 +82,15 @@
   }
 
   .patients {
-    display: grid;
-    row-gap: 1em;
+    display: table;
+    padding: .5em;
+    border: 1px solid #222;
+    /* border-radius: 10px; */
+    /* box-shadow: 0px 2px 5px rgba(0, 0, 0, .1); */
+    border-collapse: collapse;
+  }
+
+  :global(th), :global(td) {
+    padding: .5em;
   }
 </style>
