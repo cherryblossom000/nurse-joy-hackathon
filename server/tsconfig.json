@@ -2,9 +2,12 @@
   "include": ["src/**/*.ts"],
   "extends": "../tsconfig.settings.json",
   "compilerOptions": {
+    "rootDir": "src",
     "outDir": "dist",
     "module": "ES2020",
     "moduleResolution": "Node"
   },
-  "references": [{"path": "../shared"}]
+  "references": [
+    {"path": "../shared"}
+  ]
 }

@@ -11,6 +11,10 @@ module.exports = {
       extends: ['@cherryblossom/eslint-config/ts/browser'],
       parserOptions: {
         project: path.join(__dirname, 'tsconfig.json')
+      },
+      rules: {
+        // Kind of broken for Svelte
+        'import/no-unused-modules': 0
       }
     },
     {

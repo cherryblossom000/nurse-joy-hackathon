@@ -1,20 +1,39 @@
+import * as t from 'io-ts'
+
 export enum Gender {
   Male,
   Female,
   Other
 }
 
-export type Urgency = 1 | 2 | 3
+const Urgency = t.union([t.literal(1), t.literal(2), t.literal(3)])
 
-export interface Patient {
-  readonly name: string
-  readonly age: number
-  readonly height: number
-  readonly weight: number
-  readonly gender: Gender
-  readonly phoneNumber: string
-  readonly address: string
-  readonly email: string
-  readonly injuryType: string
-  readonly urgency: Urgency
+export type Urgency = t.TypeOf<typeof Urgency>
+
+export const PatientWithoutId = t.readonly(
+  t.interface({
+    name: t.string,
+    height: t.number,
+    weight: t.number,
+    gender: t.union(
+      Object.values(Gender)
+        .filter((v): v is number => typeof v == 'number')
+        .map(g => t.literal(g)) as [
+        t.LiteralC<Gender.Male>,
+        t.LiteralC<Gender.Female>,
+        t.LiteralC<Gender.Other>
+      ]
+    ),
+    phoneNumber: t.string,
+    address: t.string,
+    email: t.string,
+    injuryType: t.string,
+    urgency: t.union([t.literal(1), t.literal(2), t.literal(3)])
+  })
+)
+
+export type PatientWithoutId = t.TypeOf<typeof PatientWithoutId>
+
+export interface Patient extends PatientWithoutId {
+  readonly _id: string
 }

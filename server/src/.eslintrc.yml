@@ -1,0 +1,25 @@
+rules:
+  # Allow PascalCase variables for io-ts codecs
+  '@typescript-eslint/naming-convention':
+  - 1
+  - selector: default
+    format: [camelCase]
+    leadingUnderscore: allow
+    trailingUnderscore: allow
+  - selector: variable
+    modifiers: [const]
+    format: [camelCase, UPPER_CASE, PascalCase]
+    leadingUnderscore: allow
+    trailingUnderscore: allow
+  - selector: property
+    format: [camelCase, UPPER_CASE]
+    leadingUnderscore: allow
+    trailingUnderscore: allow
+  - selector: typeLike
+    format: [PascalCase]
+    leadingUnderscore: allow
+    trailingUnderscore: allow
+  - selector: enumMember
+    format: [UPPER_CASE, PascalCase]
+    leadingUnderscore: allow
+    trailingUnderscore: allow

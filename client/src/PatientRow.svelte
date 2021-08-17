@@ -1,5 +1,10 @@
 <script lang="ts">
-  import {formatGender, formatPhoneNumber, formatUrgency} from './util'
+  import {
+    allGenders,
+    formatGender,
+    formatPhoneNumber,
+    formatUrgency
+  } from './util'
   import Fa from 'svelte-fa'
   import {faCheck, faPencilAlt} from '@fortawesome/free-solid-svg-icons'
   import type {Patient} from '../../shared'
@@ -7,7 +12,17 @@
   export let patient: Patient
 
   let editing = false
-  let name = patient.name
+  let {
+    name,
+    injuryType,
+    age,
+    gender,
+    height,
+    weight,
+    phoneNumber,
+    email,
+    address
+  } = patient
 
   const handleBtnClick = (): void => {
     if (editing) {
@@ -19,48 +34,81 @@
 </script>
 
 <tr class="patient">
-  {#if editing}
-    <td class="urgency urgency-{patient.urgency}"
-      >{formatUrgency(patient.urgency)}</td
-    >
-    <td>
-      {#if editing}
-        <input type="text" bind:value={name} />
-      {:else}
-        {name}
-      {/if}
-    </td>
-    <td>{patient.injuryType}</td>
-    <td>{patient.age}</td>
-    <td>{formatGender(patient.gender)}</td>
-    <td>{patient.height} cm</td>
-    <td>{patient.weight} kg</td>
-    <td>{formatPhoneNumber(patient.phoneNumber)}</td>
-    <td>{patient.email}</td>
-    <td>{patient.address}</td>
-    <td><button on:click={handleBtnClick}><Fa icon={faCheck} /></button></td>
-  {:else}
-    <td class="urgency urgency-{patient.urgency}"
-      >{formatUrgency(patient.urgency)}</td
-    >
-    <td>
-      {#if editing}
-        <input type="text" bind:value={name} />
-      {:else}
-        {name}
-      {/if}
-    </td>
-    <td>{patient.injuryType}</td>
-    <td>{patient.age}</td>
-    <td>{formatGender(patient.gender)}</td>
-    <td>{patient.height} cm</td>
-    <td>{patient.weight} kg</td>
-    <td>{formatPhoneNumber(patient.phoneNumber)}</td>
-    <td>{patient.email}</td>
-    <td>{patient.address}</td>
-    <td><button on:click={handleBtnClick}><Fa icon={faPencilAlt} /></button></td
-    >
-  {/if}
+  <td class="urgency urgency-{patient.urgency}"
+    >{formatUrgency(patient.urgency)}</td
+  >
+  <td>
+    {#if editing}
+      <input type="text" bind:value={name} />
+    {:else}
+      {name}
+    {/if}
+  </td>
+  <td>
+    {#if editing}
+      <input type="text" bind:value={injuryType} />
+    {:else}
+      {injuryType}
+    {/if}
+  </td>
+  <td>
+    {#if editing}
+      <input type="number" bind:value={age} />
+    {:else}
+      {age}
+    {/if}
+  </td>
+  <td>
+    {#if editing}
+      <select>
+        {#each allGenders as [name, value]}
+          <option {value} selected={value === gender}>{name}</option>
+        {/each}
+      </select>
+    {:else}
+      {formatGender(gender)}
+    {/if}
+  </td>
+  <td>
+    {#if editing}
+      <input type="number" bind:value={height} />
+    {:else}
+      {height}
+    {/if} cm
+  </td>
+  <td>
+    {#if editing}
+      <input type="number" bind:value={weight} />
+    {:else}
+      {weight}
+    {/if} kg
+  </td>
+  <td>
+    {#if editing}
+      <input type="tel" bind:value={phoneNumber} />
+    {:else}
+      {formatPhoneNumber(phoneNumber)}
+    {/if}
+  </td>
+  <td>
+    {#if editing}
+      <input type="email" bind:value={email} />
+    {:else}
+      {email}
+    {/if}
+  </td>
+  <td>
+    {#if editing}
+      <input type="text" bind:value={address} />
+    {:else}
+      {address}
+    {/if}
+  </td>
+  <td
+    ><button on:click={handleBtnClick}
+      ><Fa icon={editing ? faCheck : faPencilAlt} /></button
+    ></td
+  >
 </tr>
 
 <style>

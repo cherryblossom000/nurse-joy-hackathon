@@ -7,5 +7,7 @@
     "moduleResolution": "Node",
     "lib": ["DOM", "DOM.Iterable"]
   },
-  "references": [{"path": "../../shared"}]
+  "references": [
+    {"path": "../../shared"}
+  ]
 }

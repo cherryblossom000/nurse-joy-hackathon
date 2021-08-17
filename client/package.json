@@ -11,6 +11,13 @@
     "lint": "eslint --max-warnings 0 --cache . --ext ts,svelte",
     "format": "prettier -w --ignore-path ../.prettierignore **/*.{js,ts,svelte}"
   },
+  "dependencies": {
+    "@fontsource/inter": "^4.5.0",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@nurse-joy-hackathon/shared": "link:../shared",
+    "normalize.css": "^8.0.1",
+    "svelte-fa": "^2.2.1"
+  },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.17",
     "svelte": "^3.42.1",
@@ -18,11 +25,5 @@
     "svelte-preprocess": "^4.7.4",
     "vite": "^2.5.0",
     "vite-plugin-html": "^2.0.7"
-  },
-  "dependencies": {
-    "@fontsource/inter": "^4.5.0",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "normalize.css": "^8.0.1",
-    "svelte-fa": "^2.2.1"
   }
 }

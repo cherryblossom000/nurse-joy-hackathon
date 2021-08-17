@@ -3,4 +3,7 @@ bracketSpacing: false
 semi: false
 singleQuote: true
 trailingComma: none
-plugins: [prettier-plugin-svelte]
+overrides:
+- files: '**/*.svelte'
+  options:
+    plugins: [prettier-plugin-svelte]
