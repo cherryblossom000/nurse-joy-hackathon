@@ -22,7 +22,7 @@
       height: 178,
       weight: 82,
       gender: Gender.Male,
-      phoneNumber: '02135164363',
+      phoneNumber: '0213516436',
       address: '1 Abc St, Def, VIC 1234 Australia',
       email: 'john.doe@mail.com',
       injuryType: 'Injury type 2',
@@ -92,5 +92,6 @@
 
   :global(th), :global(td) {
     padding: .5em;
+    white-space: nowrap;
   }
 </style>

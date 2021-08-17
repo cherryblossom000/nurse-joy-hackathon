@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {genderToString, urgencyToString} from './util'
+  import {formatGender, formatPhoneNumber, formatUrgency} from './util'
   import Fa from 'svelte-fa'
   import {faPencilAlt} from '@fortawesome/free-solid-svg-icons'
   import type {Patient} from '../../shared'
@@ -8,14 +8,14 @@
 </script>
 
 <tr class="patient">
-  <td class="urgency urgency-{patient.urgency}">{urgencyToString(patient.urgency)}</td>
+  <td class="urgency urgency-{patient.urgency}">{formatUrgency(patient.urgency)}</td>
   <td>{patient.name}</td>
   <td>{patient.injuryType}</td>
   <td>{patient.age}</td>
-  <td>{genderToString(patient.gender)}</td>
-  <td>{patient.height}</td>
-  <td>{patient.weight}</td>
-  <td>{patient.phoneNumber}</td>
+  <td>{formatGender(patient.gender)}</td>
+  <td>{patient.height} cm</td>
+  <td>{patient.weight} kg</td>
+  <td>{formatPhoneNumber(patient.phoneNumber)}</td>
   <td>{patient.email}</td>
   <td>{patient.address}</td>
   <!-- using the .edit directly on Fa causes the CSS modules to stuff up -->
@@ -25,8 +25,6 @@
 <style>
   .patient {
     border: 1px solid #222;
-    /* border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, .1); */
   }
 
   .urgency {
