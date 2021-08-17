@@ -1,17 +1,28 @@
 <script lang="ts">
-  import {formatGender, formatPhoneNumber, formatUrgency} from '../util'
+  import {
+    deletePatient,
+    formatGender,
+    formatPhoneNumber,
+    formatUrgency
+  } from '../util'
   import Fa from 'svelte-fa'
   import {faPencilAlt} from '@fortawesome/free-solid-svg-icons'
   import RemoveButton from './RemoveButton.svelte'
-  import PatientRow from './PatientRow.svelte'
+  import RowWrapper from './RowWrapper.svelte'
   import type {Patient} from '@nurse-joy-hackathon/shared'
 
   export let patient: Patient
   export let edit: () => void
   export let remove: () => void
+
+  const removePatient = async (): Promise<void> => {
+    // TODO: error handling
+    await deletePatient(patient)
+    remove()
+  }
 </script>
 
-<PatientRow>
+<RowWrapper>
   <td class="urgency urgency-{patient.urgency}"
     >{formatUrgency(patient.urgency)}</td
   >
@@ -44,9 +55,9 @@
   </td>
   <td
     ><button on:click={edit}><Fa icon={faPencilAlt} /></button>
-    <RemoveButton {patient} {remove} /></td
+    <RemoveButton on:click={removePatient} /></td
   >
-</PatientRow>
+</RowWrapper>
 
 <style>
   .urgency {

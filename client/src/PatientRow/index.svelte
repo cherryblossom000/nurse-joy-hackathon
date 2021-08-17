@@ -10,7 +10,7 @@
 </script>
 
 {#if editing}
-  <EditRow bind:patient={patient} {remove} stopEditing={() => (editing = false)} />
+  <EditRow bind:patient {remove} stopEditing={() => (editing = false)} />
 {:else}
-  <ViewRow bind:patient={patient} {remove} edit={() => (editing = true)} />
+  <ViewRow bind:patient {remove} edit={() => (editing = true)} />
 {/if}
