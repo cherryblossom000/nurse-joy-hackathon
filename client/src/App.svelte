@@ -1,6 +1,6 @@
 <script lang="ts">
   import {Gender} from '../../shared'
-  import PatientView from './PatientView.svelte'
+  import PatientRow from './PatientRow.svelte'
   import type {Patient} from '../../shared'
 
   const patients: readonly Patient[] = [
@@ -63,7 +63,7 @@
       <th>Address</th>
     </tr>
     {#each patients as patient}
-      <PatientView {patient} />
+      <PatientRow {patient} />
     {/each}
   </table>
 </main>
