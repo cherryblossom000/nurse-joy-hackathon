@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc -b",
     "lint": "eslint --max-warnings 0 --cache . --ext ts",
-    "format": "prettier -w --ignore-path ../.prettierignore **/*.{js,ts,svelte}"
+    "format": "prettier -w --ignore-path ../.prettierignore '**/*.{cjs,ts,svelte}'"
   },
   "devDependencies": {
     "mongodb": "^4.1.0"

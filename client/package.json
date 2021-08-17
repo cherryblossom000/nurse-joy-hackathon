@@ -9,7 +9,7 @@
     "build": "vite build",
     "dev": "vite",
     "lint": "eslint --max-warnings 0 --cache . --ext ts,svelte",
-    "format": "prettier -w --ignore-path ../.prettierignore **/*.{js,ts,svelte}"
+    "format": "prettier -w --ignore-path ../.prettierignore '**/*.{cjs,ts,svelte}'"
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.0",
