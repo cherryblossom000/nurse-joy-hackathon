@@ -6,17 +6,22 @@
     formatUrgency
   } from './util'
   import Fa from 'svelte-fa'
-  import {faCheck, faPencilAlt} from '@fortawesome/free-solid-svg-icons'
+  import {
+    faCheck,
+    faPencilAlt,
+    faTimes
+  } from '@fortawesome/free-solid-svg-icons'
   import type {Patient} from '../../shared'
 
   export let patient: Patient
+  export let remove: () => void
 
   let editing = false
   let {
     name,
-    injuryType,
     age,
     gender,
+    injuryType,
     height,
     weight,
     phoneNumber,
@@ -24,12 +29,33 @@
     address
   } = patient
 
-  const handleBtnClick = (): void => {
+  const handleBtnClick = async (): Promise<void> => {
     if (editing) {
       editing = false
+      // TODO: error handling
+      await fetch(`/api/patients/${patient._id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          name,
+          age,
+          gender,
+          injuryType,
+          height,
+          weight,
+          phoneNumber,
+          email,
+          address
+        })
+      })
     } else {
       editing = true
     }
+  }
+
+  const handleRemove = async (): Promise<void> => {
+    // TODO: error handling
+    await fetch(`/api/patients/${patient._id}`, {method: 'DELETE'})
+    remove()
   }
 </script>
 
@@ -107,7 +133,8 @@
   <td
     ><button on:click={handleBtnClick}
       ><Fa icon={editing ? faCheck : faPencilAlt} /></button
-    ></td
+    >
+    <button on:click={handleRemove}><Fa icon={faTimes} /></button></td
   >
 </tr>
 

@@ -1,46 +1,11 @@
 <script lang="ts">
-  import {Gender} from '../../shared'
-  import PatientRow from './PatientRow.svelte'
-  import type {Patient} from '../../shared'
+  import type {Patient} from '@nurse-joy-hackathon/shared'
 
-  const patients: readonly Patient[] = [
-    {
-      name: 'Jane Smith',
-      age: 16,
-      height: 160,
-      weight: 60,
-      gender: Gender.Female,
-      phoneNumber: '0412345678',
-      address: '1 Something St, Suburb, VIC 1234 Australia',
-      email: 'jane.smith@mail.com',
-      injuryType: 'Injury type 1',
-      urgency: 1
-    },
-    {
-      name: 'John Doe',
-      age: 25,
-      height: 178,
-      weight: 82,
-      gender: Gender.Male,
-      phoneNumber: '0213516436',
-      address: '1 Abc St, Def, VIC 1234 Australia',
-      email: 'john.doe@mail.com',
-      injuryType: 'Injury type 2',
-      urgency: 2
-    },
-    {
-      name: 'First Last',
-      age: 42,
-      height: 170,
-      weight: 79,
-      gender: Gender.Other,
-      phoneNumber: '0235729573',
-      address: '20 SAfd Ln, Saregdf, VIC 3246 Australia',
-      email: 'first.last@mail.com',
-      injuryType: 'COVID-19',
-      urgency: 3
-    }
-  ]
+  import PatientRow from './PatientRow.svelte'
+
+  const patientsPromise = fetch('/api/patients').then<Patient[]>(response =>
+    response.json()
+  )
 </script>
 
 <svelte:head>
@@ -49,23 +14,35 @@
 
 <main>
   <h1>Palet Town Hopsital</h1>
-  <table class="patients">
-    <tr>
-      <th>Urgency</th>
-      <th>Name</th>
-      <th>Injury</th>
-      <th>Age</th>
-      <th>Gender</th>
-      <th>Height</th>
-      <th>Weight</th>
-      <th>Phone Number</th>
-      <th>Email</th>
-      <th>Address</th>
-    </tr>
-    {#each patients as patient}
-      <PatientRow {patient} />
-    {/each}
-  </table>
+  {#await patientsPromise then patients}
+    <table class="patients">
+      <tr>
+        <th>Urgency</th>
+        <th>Name</th>
+        <th>Injury</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Height</th>
+        <th>Weight</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Address</th>
+      </tr>
+      {#each patients as patient}
+        <PatientRow
+          {patient}
+          remove={() =>
+            (patients = patients.filter(({_id}) => _id !== patient._id))}
+        />
+      {/each}
+    </table>
+  {:catch error}
+    <p>
+      Oh no! Something went wrong!
+      <br />
+      {error instanceof Error ? error.message : String(error)}
+    </p>
+  {/await}
 </main>
 
 <style>

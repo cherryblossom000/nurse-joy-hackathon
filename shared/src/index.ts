@@ -13,6 +13,7 @@ export type Urgency = t.TypeOf<typeof Urgency>
 export const PatientWithoutId = t.readonly(
   t.interface({
     name: t.string,
+    age: t.number,
     height: t.number,
     weight: t.number,
     gender: t.union(
