@@ -1,0 +1,9 @@
+{
+  "include": ["vite.config.ts"],
+  "extends": "../tsconfig.settings.json",
+  "compilerOptions": {
+    "module": "ES2020",
+    "moduleResolution": "Node",
+    "noEmit": true
+  }
+}

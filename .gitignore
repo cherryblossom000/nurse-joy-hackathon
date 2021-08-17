@@ -1,0 +1,8 @@
+~*.docx
+*.eslintcache
+*.tsbuildinfo
+.pnpm-debug.log
+node_modules/
+/client/dist/
+/server/dist/
+/server/db/

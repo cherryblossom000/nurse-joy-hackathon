@@ -1,0 +1,31 @@
+{
+  "name": "nurse-joy-hackathon-server",
+  "version": "0.0.1",
+  "private": true,
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=16"
+  },
+  "main": "dist/index",
+  "scripts": {
+    "start": "node .",
+    "build": "tsc",
+    "watch": "pnpm build -- -w",
+    "lint": "eslint --max-warnings 0 --cache . --ext ts",
+    "init-database": "mkdir db",
+    "start-datbase": "mongod --dbpath db"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "koa": "^2.13.1",
+    "koa-static": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.13.4",
+    "@types/koa-static": "^4.0.2",
+    "@types/node": "^16.6.1"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.settings.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "noEmit": true,
+    "isolatedModules": true,
+    "moduleResolution": "Node",
+    "lib": ["DOM", "DOM.Iterable"]
+  }
+}
