@@ -1,6 +1,7 @@
 ~*.docx
 *.eslintcache
 *.tsbuildinfo
+.env
 .pnpm-debug.log
 node_modules/
 dist/

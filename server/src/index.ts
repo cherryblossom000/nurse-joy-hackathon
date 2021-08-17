@@ -35,10 +35,10 @@ const client = new MongoClient(process.env.DATABASE_URL!, {
   w: 'majority'
 })
 
-const db = client.db()
+const db = client.db(process.env.DATABASE_NAME)
 const patients = db.collection<Patient>('patients')
 
-const PatientPatchInput = t.partial(PatientWithoutId.type.props)
+const PatientPatchInput = t.partial(PatientWithoutId.props)
 type PatientPatchInput = t.TypeOf<typeof PatientPatchInput>
 
 type MaybePromise<T> = Promise<T> | T

@@ -10,28 +10,26 @@ const Urgency = t.union([t.literal(1), t.literal(2), t.literal(3)])
 
 export type Urgency = t.TypeOf<typeof Urgency>
 
-export const PatientWithoutId = t.readonly(
-  t.interface({
-    name: t.string,
-    age: t.number,
-    height: t.number,
-    weight: t.number,
-    gender: t.union(
-      Object.values(Gender)
-        .filter((v): v is number => typeof v == 'number')
-        .map(g => t.literal(g)) as [
-        t.LiteralC<Gender.Male>,
-        t.LiteralC<Gender.Female>,
-        t.LiteralC<Gender.Other>
-      ]
-    ),
-    phoneNumber: t.string,
-    address: t.string,
-    email: t.string,
-    injuryType: t.string,
-    urgency: t.union([t.literal(1), t.literal(2), t.literal(3)])
-  })
-)
+export const PatientWithoutId = t.interface({
+  name: t.string,
+  age: t.number,
+  height: t.number,
+  weight: t.number,
+  gender: t.union(
+    Object.values(Gender)
+      .filter((v): v is number => typeof v == 'number')
+      .map(g => t.literal(g)) as [
+      t.LiteralC<Gender.Male>,
+      t.LiteralC<Gender.Female>,
+      t.LiteralC<Gender.Other>
+    ]
+  ),
+  phoneNumber: t.string,
+  address: t.string,
+  email: t.string,
+  injuryType: t.string,
+  urgency: t.union([t.literal(1), t.literal(2), t.literal(3)])
+})
 
 export type PatientWithoutId = t.TypeOf<typeof PatientWithoutId>
 

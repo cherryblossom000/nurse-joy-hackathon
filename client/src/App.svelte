@@ -1,11 +1,13 @@
 <script lang="ts">
+  import Fa from 'svelte-fa'
+  import {faPlus} from '@fortawesome/free-solid-svg-icons'
+  import PatientRow from './PatientRow/index.svelte'
   import type {Patient} from '@nurse-joy-hackathon/shared'
 
-  import PatientRow from './PatientRow.svelte'
-
-  const patientsPromise = fetch('/api/patients').then<Patient[]>(response =>
-    response.json()
+  const patientsPromise = fetch('/api/patients').then<readonly Patient[]>(
+    response => response.json()
   )
+  let newPatients: readonly Patient[] = []
 </script>
 
 <svelte:head>
@@ -35,6 +37,7 @@
             (patients = patients.filter(({_id}) => _id !== patient._id))}
         />
       {/each}
+      <tr><td><button><Fa icon={faPlus} /></button></td></tr>
     </table>
   {:catch error}
     <p>
