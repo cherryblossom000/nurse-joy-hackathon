@@ -83,15 +83,15 @@
 
   .patients {
     display: table;
-    padding: .5em;
+    padding: 0.5em;
     border: 1px solid #222;
     /* border-radius: 10px; */
     /* box-shadow: 0px 2px 5px rgba(0, 0, 0, .1); */
     border-collapse: collapse;
   }
 
-  :global(th), :global(td) {
-    padding: .5em;
+  .patients :global(tr > *) {
+    padding: 0.5em;
     white-space: nowrap;
   }
 </style>

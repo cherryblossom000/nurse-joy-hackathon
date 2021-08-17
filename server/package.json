@@ -16,7 +16,7 @@
     "build": "tsc -b",
     "watch": "pnpm build -- -w",
     "lint": "eslint --max-warnings 0 --cache . --ext ts",
-    "format": "prettier -w --ignore-path ../.prettierignore .",
+    "format": "prettier -w --ignore-path ../.prettierignore **/*.{js,ts,svelte}",
     "init-db": "mkdir db",
     "start-db": "mongod --dbpath db"
   },

@@ -9,7 +9,7 @@
     "build": "vite build",
     "dev": "vite",
     "lint": "eslint --max-warnings 0 --cache . --ext ts,svelte",
-    "format": "prettier -w --ignore-path ../.prettierignore ."
+    "format": "prettier -w --ignore-path ../.prettierignore **/*.{js,ts,svelte}"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.17",

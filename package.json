@@ -10,7 +10,7 @@
     "start": "pnpm -C server start",
     "build": "pnpm m build",
     "lint": "eslint --max-warnings 0 --cache . --ext js,ts,svelte",
-    "format": "prettier -w .",
+    "format": "prettier -w **/*.{js,ts,svelte}",
     "init-database": "mkdir db",
     "start-datbase": "mongod --dbpath db"
   },
