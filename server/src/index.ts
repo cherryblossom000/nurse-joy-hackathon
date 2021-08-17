@@ -9,6 +9,7 @@ import * as E from 'fp-ts/lib/Either.js'
 import {pipe} from 'fp-ts/lib/function.js'
 import * as t from 'io-ts'
 import bodyParser from 'koa-bodyparser'
+import logger from 'koa-logger'
 import {MongoClient} from 'mongodb'
 import Koa from 'koa'
 import serveStatic from 'koa-static'
@@ -117,6 +118,7 @@ const router = new Router()
   })
 
 const server = app
+  .use(logger())
   .use(
     serveStatic(new URL('../../client/dist', import.meta.url).pathname, {
       extensions: ['html']

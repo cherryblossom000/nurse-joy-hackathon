@@ -31,10 +31,12 @@
 
   const handleBtnClick = async (): Promise<void> => {
     if (editing) {
-      editing = false
       // TODO: error handling
       await fetch(`/api/patients/${patient._id}`, {
         method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
           name,
           age,
@@ -47,6 +49,7 @@
           address
         })
       })
+      editing = false
     } else {
       editing = true
     }
