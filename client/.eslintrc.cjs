@@ -18,6 +18,12 @@ module.exports = {
         'import/no-unused-modules': 0,
         'node/no-unpublished-import': 0
       }
+    },
+    {
+      files: 'src/main.ts',
+      rules: {
+        'import/no-unused-modules': 0
+      }
     }
   ]
 }

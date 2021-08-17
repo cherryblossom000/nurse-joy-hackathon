@@ -20,6 +20,12 @@ module.exports = {
       settings: {
         'svelte3/typescript': () => typescript
       }
+    },
+    {
+      files: 'main.ts',
+      rules: {
+        'import/no-unused-modules': 0
+      }
     }
   ]
 }

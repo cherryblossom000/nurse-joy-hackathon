@@ -15,6 +15,7 @@ Nurse Joy and the citizens of Palet Town.
 Your solution should include the following:
 
 - Ability to take and edit inputs, including:
+
   - Patient first name
   - Patient last name
   - Patient age

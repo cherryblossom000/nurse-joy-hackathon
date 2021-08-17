@@ -1,0 +1,6 @@
+{
+  "name": "nurse-joy-hackathon-shared",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/index"
+}
