@@ -4,7 +4,7 @@ export enum Gender {
   Other
 }
 
-type Urgency = 1 | 2 | 3
+export type Urgency = 1 | 2 | 3
 
 export interface Patient {
   readonly name: string

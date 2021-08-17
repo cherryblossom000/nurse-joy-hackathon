@@ -8,7 +8,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "lint": "eslint --max-warnings 0 --cache . --ext ts,svelte"
+    "lint": "eslint --max-warnings 0 --cache . --ext ts,svelte",
+    "format": "prettier -w --ignore-path ../.prettierignore ."
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.17",
@@ -20,6 +21,8 @@
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.0",
-    "normalize.css": "^8.0.1"
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "normalize.css": "^8.0.1",
+    "svelte-fa": "^2.2.1"
   }
 }

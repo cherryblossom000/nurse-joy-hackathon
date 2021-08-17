@@ -17,16 +17,28 @@
       urgency: 1
     },
     {
-      name: 'Jane Doe',
+      name: 'John Doe',
       age: 25,
-      height: 160,
-      weight: 60,
+      height: 178,
+      weight: 82,
       gender: Gender.Male,
       phoneNumber: '02135164363',
       address: '1 Abc St, Def, VIC 1234 Australia',
-      email: 'jane.smith@mail.com',
+      email: 'john.doe@mail.com',
       injuryType: 'Injury type 2',
       urgency: 2
+    },
+    {
+      name: 'First Last',
+      age: 42,
+      height: 170,
+      weight: 79,
+      gender: Gender.Other,
+      phoneNumber: '0235729573',
+      address: '20 SAfd Ln, Saregdf, VIC 3246 Australia',
+      email: 'first.last@mail.com',
+      injuryType: 'COVID-19',
+      urgency: 3
     }
   ]
 </script>
@@ -37,11 +49,11 @@
 
 <main>
   <h1>Palet Town Hopsital</h1>
-  <div class="patients">
+  <table class="patients">
     {#each patients as patient}
       <PatientView {patient} />
     {/each}
-  </div>
+  </table>
 </main>
 
 <style>
@@ -59,5 +71,6 @@
 
   .patients {
     display: grid;
+    row-gap: 1em;
   }
 </style>

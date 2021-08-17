@@ -2,5 +2,10 @@
   "name": "nurse-joy-hackathon-shared",
   "version": "0.0.1",
   "type": "module",
-  "main": "dist/index"
+  "main": "dist/index",
+  "scripts": {
+    "build": "tsc -b",
+    "lint": "eslint --max-warnings 0 --cache . --ext ts",
+    "format": "prettier -w --ignore-path ../.prettierignore ."
+  }
 }
