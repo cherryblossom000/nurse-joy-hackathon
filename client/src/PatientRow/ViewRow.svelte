@@ -48,10 +48,12 @@
     {patient.weight} kg
   </td>
   <td>
-    {formatPhoneNumber(patient.phoneNumber)}
+    <a href={`tle:${patient.phoneNumber}`}
+      >{formatPhoneNumber(patient.phoneNumber)}</a
+    >
   </td>
   <td>
-    {patient.email}
+    <a href={`mailto:${patient.email}`}>{patient.email}</a>
   </td>
   <td>
     {patient.address}
@@ -71,13 +73,13 @@
   }
 
   .urgency-1 {
-    color: #ffea00;
+    color: #ffdc00;
   }
   .urgency-2 {
-    color: orange;
+    color: #ff851b;
   }
   .urgency-3 {
-    color: red;
+    color: #ff4136;
   }
 
   .injuries {

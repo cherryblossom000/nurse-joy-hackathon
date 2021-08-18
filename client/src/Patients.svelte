@@ -72,8 +72,8 @@
 <style>
   .patients {
     --border: 1px solid var(--foreground);
-    display: table;
     padding: 0.5em;
+    border-top: var(--border);
     border-left: var(--border);
     border-right: var(--border);
     border-bottom: var(--border);
@@ -84,7 +84,7 @@
     padding: 0.5em;
   }
 
-  .patients thead {
+  .patients th {
     position: sticky;
     top: 1;
     background-color: aquamarine;

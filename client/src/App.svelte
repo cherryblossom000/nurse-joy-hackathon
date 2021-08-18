@@ -26,7 +26,12 @@
     padding: 1rem;
   }
 
+  :global(a) {
+    color: #0074d9;
+  }
+
   :global(button) {
+    background-color: #efefef;
     border: none;
     border-radius: 3px;
     padding: 0.3em;
