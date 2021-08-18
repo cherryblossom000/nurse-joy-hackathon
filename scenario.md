@@ -1,4 +1,4 @@
-# SCENARIO – Coding Focussed
+# SCENARIO – Coding Focused
 
 Nurse Joy is overwhelmed with the number of patients that are turning up to the
 Palet Town Hospital. She generally uses a note pad to jot down the name of the
