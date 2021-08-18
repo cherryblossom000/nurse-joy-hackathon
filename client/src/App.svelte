@@ -38,4 +38,9 @@
     height: 2em;
     cursor: pointer;
   }
+
+  :global(input, select, textarea) {
+    border: 1px solid #8f8f8f;
+    border-radius: 3px;
+  }
 </style>

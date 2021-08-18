@@ -19,4 +19,4 @@
   }
 </script>
 
-<PatientInput {patient} {update} remove={stopEditing} />
+<PatientInput {patient} {update} cancel={stopEditing} />

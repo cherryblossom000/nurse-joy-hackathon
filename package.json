@@ -9,6 +9,7 @@
   "scripts": {
     "start": "pnpm -C server start",
     "build": "pnpm m run build",
+    "watch": "pnpm m run watch",
     "lint": "eslint --max-warnings 0 --cache . --ext js,ts,svelte",
     "format": "prettier -w '**/*.{cjs,ts,svelte}'",
     "init-database": "mkdir db",

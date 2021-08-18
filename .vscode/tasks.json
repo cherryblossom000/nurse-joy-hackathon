@@ -10,10 +10,24 @@
       "presentation": {
         "reveal": "never"
       },
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
+      "group": "build"
+    },
+    {
+      "label": "Watch (client)",
+      "command": "pnpm",
+      "args": ["-C", "client", "watch"],
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "(.+?):(\\d+?):(\\d+?)\\nError: ([\\s\\S]+?) \\(ts\\)",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "message": 4
+        },
+        "fileLocation": "absolute",
+      },
+      "isBackground": true,
+      "group": "build"
     }
   ]
 }

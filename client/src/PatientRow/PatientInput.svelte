@@ -1,15 +1,14 @@
 <script lang="ts">
   import {allGenders, allUrgencies, formatUrgency} from '../util'
   import Fa from 'svelte-fa'
-  import {faCheck} from '@fortawesome/free-solid-svg-icons'
+  import {faCheck, faTimes} from '@fortawesome/free-solid-svg-icons'
   import ListInput from './ListInput.svelte'
   import RowWrapper from './RowWrapper.svelte'
-  import RemoveButton from './RemoveButton.svelte'
   import type {PatientWithoutId} from '@nurse-joy-hackathon/shared'
 
   export let patient: PatientWithoutId
   export let update: () => void
-  export let remove: () => void
+  export let cancel: () => void
 
   let {
     name,
@@ -74,10 +73,24 @@
     <input type="email" bind:value={email} />
   </td>
   <td>
-    <input type="text" bind:value={address} />
+    <textarea bind:value={address} />
   </td>
   <td
     ><button on:click={update}><Fa icon={faCheck} /></button>
-    <RemoveButton onClick={remove} />
+    <button title="Cancel" on:click={cancel}><Fa icon={faTimes} /></button>
   </td></RowWrapper
 >
+
+<style>
+  input[type='number'] {
+    width: 3em;
+  }
+
+  input[type='tel'] {
+    width: 8em;
+  }
+
+  input[type='email'] {
+    width: 10em;
+  }
+</style>

@@ -25,4 +25,4 @@
   }
 </script>
 
-<PatientInput {patient} update={add} remove={cancel} />
+<PatientInput {patient} update={add} {cancel} />

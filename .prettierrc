@@ -7,3 +7,4 @@ overrides:
 - files: '**/*.svelte'
   options:
     plugins: [prettier-plugin-svelte]
+    htmlWhitespaceSensitivity: strict

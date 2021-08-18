@@ -6,8 +6,7 @@
     formatUrgency
   } from '../util'
   import Fa from 'svelte-fa'
-  import {faPencilAlt} from '@fortawesome/free-solid-svg-icons'
-  import RemoveButton from './RemoveButton.svelte'
+  import {faPencilAlt, faTrash} from '@fortawesome/free-solid-svg-icons'
   import RowWrapper from './RowWrapper.svelte'
   import type {Patient} from '@nurse-joy-hackathon/shared'
 
@@ -29,7 +28,7 @@
   <td>
     {patient.name}
   </td>
-  <td>
+  <td class="injuries">
     <ul>
       {#each patient.injuries as injury}
         <li>{injury}</li>
@@ -58,9 +57,8 @@
     {patient.address}
   </td>
   <td
-    ><button on:click={edit}><Fa icon={faPencilAlt} /></button>
-    <RemoveButton onClick={removePatient} /></td
-  >
+    ><button title="Edit" on:click={edit}><Fa icon={faPencilAlt} /></button>
+    <button title="Delete" on:click={removePatient}><Fa icon={faTrash} /></button>
 </RowWrapper>
 
 <style>
@@ -77,5 +75,10 @@
   }
   .urgency-3 {
     color: red;
+  }
+
+  .injuries {
+    display: flex;
+    align-items: center;
   }
 </style>

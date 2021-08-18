@@ -8,6 +8,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
+    "check": "svelte-check",
+    "watch": "pnpm check -- --watch",
     "lint": "eslint --max-warnings 0 --cache . --ext ts,svelte",
     "format": "prettier -w --ignore-path ../.prettierignore '**/*.{cjs,ts,svelte}'"
   },

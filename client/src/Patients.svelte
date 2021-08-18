@@ -57,7 +57,8 @@
       {/each}
     </tbody>
   </table>
-  Add patient <button on:click={() => (newPatients = [...newPatients, defaultPatient])}
+  Add patient
+  <button on:click={() => (newPatients = [...newPatients, defaultPatient])}
     ><Fa icon={faPlus} /></button
   >
 {:catch error}
