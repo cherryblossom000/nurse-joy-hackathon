@@ -1,2 +1,2 @@
 use('test')
-db.patients.find()
+db.users.deleteMany({})

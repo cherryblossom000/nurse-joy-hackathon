@@ -79,6 +79,7 @@ importers:
       '@nurse-joy-hackathon/shared': link:../shared
       '@types/koa': ^2.13.4
       '@types/koa__router': ^8.0.7
+      '@types/koa-basic-auth': ^2.0.4
       '@types/koa-bodyparser': ^4.3.3
       '@types/koa-logger': ^3.1.1
       '@types/koa-static': ^4.0.2
@@ -88,6 +89,7 @@ importers:
       fp-ts: ^2.11.1
       io-ts: ^2.2.16
       koa: ^2.13.1
+      koa-basic-auth: ^4.0.0
       koa-bodyparser: ^4.3.0
       koa-logger: ^3.2.1
       koa-static: ^5.0.0
@@ -101,6 +103,7 @@ importers:
       fp-ts: 2.11.1
       io-ts: 2.2.16_fp-ts@2.11.1
       koa: 2.13.1
+      koa-basic-auth: 4.0.0
       koa-bodyparser: 4.3.0
       koa-logger: 3.2.1
       koa-static: 5.0.0
@@ -109,6 +112,7 @@ importers:
     devDependencies:
       '@types/koa': 2.13.4
       '@types/koa__router': 8.0.7
+      '@types/koa-basic-auth': 2.0.4
       '@types/koa-bodyparser': 4.3.3
       '@types/koa-logger': 3.1.1
       '@types/koa-static': 4.0.2
@@ -622,6 +626,12 @@ packages:
     resolution: {integrity: sha512-GJhpTepz2udxGexqos8wgaBx4I/zWIDPh/KOGEwAqtuGDkOUJu5eFvwmdBX4AmB8Odsr+9pHCQqiAqDL/yKMKw==}
     dev: true
 
+  /@types/koa-basic-auth/2.0.4:
+    resolution: {integrity: sha512-PJKvoF5OMGlEEzUnctZDGRQVqV12xB0V4KplDJvHQDX9egh9ADFa456zGXRNnhNr43t3Fe4/VzD6ziM61uM5RQ==}
+    dependencies:
+      '@types/koa': 2.13.4
+    dev: true
+
   /@types/koa-bodyparser/4.3.3:
     resolution: {integrity: sha512-/ileIpXsy1fFEzgZhZ07eZH8rAVL7jwuk/kaoVEfauO6s80g2LIDIJKEyDbuAL9S/BWflKzEC0PHD6aXkmaSbw==}
     dependencies:
@@ -975,6 +985,13 @@ packages:
 
   /base64-js/1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+    dev: false
+
+  /basic-auth/2.0.1:
+    resolution: {integrity: sha512-NF+epuEdnUYVlGuhaxbbq+dvJttwLnGY+YixlXlME5KpQ5W3CnXA5cVTneY3SPbPDRkcjMbifrwmFYcClgOZeg==}
+    engines: {node: '>= 0.8'}
+    dependencies:
+      safe-buffer: 5.1.2
     dev: false
 
   /binary-extensions/2.2.0:
@@ -2507,6 +2524,13 @@ packages:
     resolution: {integrity: sha512-8QADVssbrFjivHWQU7KkMgptGTl6WAcSdlbBPY4uNF+mWr6DGcKrvY2w4FQJoXch7+fKMjj0dRrL75vk3k23OA==}
     engines: {node: '>=6'}
     dev: true
+
+  /koa-basic-auth/4.0.0:
+    resolution: {integrity: sha512-eV1sGVAizDuFWNpY43VF3Z1ND4PotQZB/igxHNrcJXzXw+Flmj8Uv+4hP9LyNXyvqLJz/X5bmXeMu84AAGD9Jw==}
+    dependencies:
+      basic-auth: 2.0.1
+      tsscmp: 1.0.6
+    dev: false
 
   /koa-bodyparser/4.3.0:
     resolution: {integrity: sha512-uyV8G29KAGwZc4q/0WUAjH+Tsmuv9ImfBUF2oZVyZtaeo0husInagyn/JH85xMSxM0hEk/mbCII5ubLDuqW/Rw==}

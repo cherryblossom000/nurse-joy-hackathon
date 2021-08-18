@@ -55,7 +55,7 @@
   </td>
   <td
     ><button on:click={edit}><Fa icon={faPencilAlt} /></button>
-    <RemoveButton on:click={removePatient} /></td
+    <RemoveButton onClick={removePatient} /></td
   >
 </RowWrapper>
 

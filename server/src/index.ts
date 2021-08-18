@@ -1,13 +1,12 @@
-// TODO: fix typescript-eslint module resolution
-/* eslint-disable eslint-comments/disable-enable-pair, eslint-comments/require-description -- ^ */
-/* eslint-disable @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
-/* eslint-enable eslint-comments/disable-enable-pair, eslint-comments/require-description */
+// eslint-disable-next-line eslint-comments/disable-enable-pair -- whole file */
+/* eslint-disable require-atomic-updates -- ctx.(status|body) are not race conditions */
 
 import Router from '@koa/router'
 import dotenv from 'dotenv'
 import * as E from 'fp-ts/lib/Either.js'
 import {pipe} from 'fp-ts/lib/function.js'
 import * as t from 'io-ts'
+import auth from 'koa-basic-auth'
 import bodyParser from 'koa-bodyparser'
 import logger from 'koa-logger'
 import {MongoClient} from 'mongodb'
@@ -18,7 +17,7 @@ import {Gender, PatientWithoutId} from '@nurse-joy-hackathon/shared'
 import type {AddressInfo} from 'node:net'
 import type {Patient} from '@nurse-joy-hackathon/shared'
 
-dotenv.config()
+dotenv.config({path: new URL('../.env', import.meta.url).pathname})
 
 const dev = process.env.NODE_ENV !== 'production'
 
@@ -41,92 +40,70 @@ const patients = db.collection<Patient>('patients')
 const PatientPatchInput = t.partial(PatientWithoutId.props)
 type PatientPatchInput = t.TypeOf<typeof PatientPatchInput>
 
-type MaybePromise<T> = Promise<T> | T
-
-interface StatusAndBody {
-  readonly status: number
-  readonly body?: unknown
-}
-
 const decoding = async <T>(
   ctx: Koa.ParameterizedContext<unknown, Router.RouterParamContext<unknown>>,
   codec: t.Decoder<unknown, T>,
-  fn: (data: T) => Promise<StatusAndBody>
-): Promise<void> => {
-  const {status, body} = await pipe(
+  fn: (data: T) => Promise<void>
+): Promise<void> =>
+  pipe(
     codec.decode(ctx.request.body),
-    E.match<
-      t.Errors,
-      T,
-      MaybePromise<{readonly status: number; readonly body?: unknown}>
-    >(
-      errors => ({
-        status: 400,
-        body: {message: 'Invalid request body', error: errors}
-      }),
-      fn
-    )
+    E.match<t.Errors, T, Promise<void> | void>(errors => {
+      ctx.throw('Bad request', 400, errors)
+    }, fn)
   )
-  /* eslint-disable require-atomic-updates -- not race condition */
-  ctx.status = status
-  ctx.body = body
-  /* eslint-enable require-atomic-updates -- not race condition */
-}
 
 const app = new Koa()
-const router = new Router()
-  .get('/api/patients', async ctx => {
+const apiRoutes = new Router()
+  .prefix('/api')
+  .get('/patients', async ctx => {
     ctx.body = await patients.find({}).toArray()
   })
-  .post('/api/patients', async ctx =>
+  .post('/patients', async ctx =>
     decoding(ctx, PatientWithoutId, async data => {
       const id = ctx.params.id!
       if (await patients.findOne({_id: id}))
-        return {status: 409, message: 'Patient already exists'}
-      const patient = {_id: uuid(), ...data}
-      await patients.insertOne(patient)
-      return {
-        status: 201,
-        body: patient
+        ctx.throw('Patient already exists', 409)
+      else {
+        const patient = {_id: uuid(), ...data}
+        await patients.insertOne(patient)
+        ctx.status = 201
+        ctx.body = patient
       }
     })
   )
-  .patch('/api/patients/:id', async ctx =>
+  .patch('/patients/:id', async ctx =>
     decoding(ctx, PatientPatchInput, async data => {
       const id = ctx.params.id!
       if (await patients.findOne({_id: id})) {
         await patients.updateOne({_id: id}, {$set: data})
-        return {status: 204}
-      }
-      return {
-        status: 404,
-        body: {message: 'Patient not found'}
-      }
+        ctx.status = 204
+      } else ctx.throw('Patient not found', 404)
     })
   )
-  .delete('/api/patients/:id', async ctx => {
+  .delete('/patients/:id', async ctx => {
     const id = ctx.params.id!
     if (await patients.findOne({_id: id})) {
       await patients.deleteOne({_id: id})
-      /* eslint-disable require-atomic-updates -- not race condition */
       ctx.status = 204
-    } else {
-      ctx.status = 404
-      ctx.body = {message: 'Patient not found'}
-      /* eslint-enable require-atomic-updates -- not race condition */
-    }
+    } else ctx.throw('Patient not found', 404)
   })
 
 const server = app
   .use(logger())
+  .use(
+    auth({
+      name: process.env.USERNAME!,
+      pass: process.env.PASSWORD!
+    })
+  )
   .use(
     serveStatic(new URL('../../client/dist', import.meta.url).pathname, {
       extensions: ['html']
     })
   )
   .use(bodyParser({enableTypes: ['json']}))
-  .use(router.routes())
-  .use(router.allowedMethods())
+  .use(apiRoutes.routes())
+  .use(apiRoutes.allowedMethods())
   .listen(8080, async () => {
     await client.connect()
     if (dev) {

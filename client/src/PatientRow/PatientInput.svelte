@@ -77,6 +77,6 @@
   </td>
   <td
     ><button on:click={update}><Fa icon={faCheck} /></button>
-    <RemoveButton on:click={remove} />
+    <RemoveButton onClick={remove} />
   </td></RowWrapper
 >
