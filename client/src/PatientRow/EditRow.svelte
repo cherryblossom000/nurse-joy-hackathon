@@ -1,10 +1,8 @@
 <script lang="ts">
   import PatientInput from './PatientInput.svelte'
-  import {deletePatient} from '../util'
   import type {Patient} from '@nurse-joy-hackathon/shared'
 
   export let patient: Patient
-  export let remove: () => void
   export let stopEditing: () => void
 
   const update = async (): Promise<void> => {
@@ -19,12 +17,6 @@
     })
     stopEditing()
   }
-
-  const removePatient = async (): Promise<void> => {
-    // TODO: error handling
-    await deletePatient(patient)
-    remove()
-  }
 </script>
 
-<PatientInput {patient} {update} remove={removePatient} />
+<PatientInput {patient} {update} remove={stopEditing} />

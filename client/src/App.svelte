@@ -18,9 +18,24 @@
   :root {
     font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
       Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --foreground: #222;
+    color: var(--foreground);
   }
 
   main {
     padding: 1rem;
+  }
+
+  :global(input) {
+    width: 5em;
+  }
+
+  :global(button) {
+    border: none;
+    border-radius: 3px;
+    padding: 0.3em;
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
   }
 </style>

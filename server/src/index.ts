@@ -13,7 +13,7 @@ import {MongoClient} from 'mongodb'
 import Koa from 'koa'
 import serveStatic from 'koa-static'
 import {v4 as uuid} from 'uuid'
-import {Gender, PatientWithoutId} from '@nurse-joy-hackathon/shared'
+import {PatientWithoutId} from '@nurse-joy-hackathon/shared'
 import type {AddressInfo} from 'node:net'
 import type {Patient} from '@nurse-joy-hackathon/shared'
 
@@ -106,50 +106,6 @@ const server = app
   .use(apiRoutes.allowedMethods())
   .listen(8080, async () => {
     await client.connect()
-    if (dev) {
+    if (dev)
       console.log(`http://localhost:${(server.address() as AddressInfo).port}`)
-      if (!(await patients.countDocuments())) {
-        await patients.insertMany([
-          {
-            _id: uuid(),
-            name: 'Jane Smith',
-            age: 16,
-            height: 160,
-            weight: 60,
-            gender: Gender.Female,
-            phoneNumber: '0412345678',
-            address: '1 Something St, Suburb, VIC 1234 Australia',
-            email: 'jane.smith@mail.com',
-            injuryType: 'Injury type 1',
-            urgency: 1
-          },
-          {
-            _id: uuid(),
-            name: 'John Doe',
-            age: 25,
-            height: 178,
-            weight: 82,
-            gender: Gender.Male,
-            phoneNumber: '0213516436',
-            address: '1 Abc St, Def, VIC 1234 Australia',
-            email: 'john.doe@mail.com',
-            injuryType: 'Injury type 2',
-            urgency: 2
-          },
-          {
-            _id: uuid(),
-            name: 'First Last',
-            age: 42,
-            height: 170,
-            weight: 79,
-            gender: Gender.Other,
-            phoneNumber: '0235729573',
-            address: '20 SAfd Ln, Saregdf, VIC 3246 Australia',
-            email: 'first.last@mail.com',
-            injuryType: 'COVID-19',
-            urgency: 3
-          }
-        ])
-      }
-    }
   })

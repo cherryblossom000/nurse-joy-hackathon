@@ -27,7 +27,7 @@ export const PatientWithoutId = t.interface({
   phoneNumber: t.string,
   address: t.string,
   email: t.string,
-  injuryType: t.string,
+  injuries: t.array(t.string),
   urgency: t.union([t.literal(1), t.literal(2), t.literal(3)])
 })
 

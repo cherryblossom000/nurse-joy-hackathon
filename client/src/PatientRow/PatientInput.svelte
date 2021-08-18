@@ -2,6 +2,7 @@
   import {allGenders, allUrgencies, formatUrgency} from '../util'
   import Fa from 'svelte-fa'
   import {faCheck} from '@fortawesome/free-solid-svg-icons'
+  import ListInput from './ListInput.svelte'
   import RowWrapper from './RowWrapper.svelte'
   import RemoveButton from './RemoveButton.svelte'
   import type {PatientWithoutId} from '@nurse-joy-hackathon/shared'
@@ -15,7 +16,7 @@
     age,
     gender,
     urgency,
-    injuryType,
+    injuries,
     height,
     weight,
     phoneNumber,
@@ -26,7 +27,7 @@
   $: patient.age = age
   $: patient.gender = gender
   $: patient.urgency = urgency
-  $: patient.injuryType = injuryType
+  $: patient.injuries = injuries
   $: patient.height = height
   $: patient.weight = weight
   $: patient.phoneNumber = phoneNumber
@@ -48,7 +49,7 @@
     <input type="text" bind:value={name} />
   </td>
   <td>
-    <input type="text" bind:value={injuryType} />
+    <ListInput bind:data={injuries} />
   </td>
   <td>
     <input type="number" bind:value={age} />

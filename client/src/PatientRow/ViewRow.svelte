@@ -30,7 +30,11 @@
     {patient.name}
   </td>
   <td>
-    {patient.injuryType}
+    <ul>
+      {#each patient.injuries as injury}
+        <li>{injury}</li>
+      {/each}
+    </ul>
   </td>
   <td>
     {patient.age}

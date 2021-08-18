@@ -17,7 +17,7 @@ export const defaultPatient: PatientWithoutId = {
   age: 0,
   gender: Gender.Other,
   urgency: 1,
-  injuryType: '',
+  injuries: [],
   height: 0,
   weight: 0,
   phoneNumber: '',
