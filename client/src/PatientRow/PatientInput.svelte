@@ -36,7 +36,7 @@
 
 <RowWrapper>
   <td>
-    <select>
+    <select bind:value={urgency}>
       {#each allUrgencies as value}
         <option {value} selected={value === urgency}
           >{formatUrgency(value)}</option
@@ -54,7 +54,7 @@
     <input type="number" bind:value={age} />
   </td>
   <td>
-    <select>
+    <select bind:value={gender}>
       {#each allGenders as [name, value]}
         <option {value} selected={value === gender}>{name}</option>
       {/each}
@@ -82,6 +82,10 @@
 >
 
 <style>
+  input {
+    width: 6rem;
+  }
+
   input[type='number'] {
     width: 3em;
   }

@@ -12,7 +12,7 @@ export const allGenders = Object.entries(Gender).filter(
 
 export const allUrgencies = [1, 2, 3] as const
 
-export const defaultPatient: PatientWithoutId = {
+export const defaultPatient = (): PatientWithoutId => ({
   name: '',
   age: 0,
   gender: Gender.Other,
@@ -23,7 +23,7 @@ export const defaultPatient: PatientWithoutId = {
   phoneNumber: '',
   email: '',
   address: ''
-}
+})
 
 export const formatUrgency = (urgency: Urgency): string => '!'.repeat(urgency)
 

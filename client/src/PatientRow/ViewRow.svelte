@@ -58,8 +58,11 @@
   </td>
   <td
     ><button title="Edit" on:click={edit}><Fa icon={faPencilAlt} /></button>
-    <button title="Delete" on:click={removePatient}><Fa icon={faTrash} /></button>
-</RowWrapper>
+    <button title="Delete" on:click={removePatient}
+      ><Fa icon={faTrash} /></button
+    >
+  </td></RowWrapper
+>
 
 <style>
   .urgency {

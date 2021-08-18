@@ -58,7 +58,7 @@
     </tbody>
   </table>
   Add patient
-  <button on:click={() => (newPatients = [...newPatients, defaultPatient])}
+  <button on:click={() => (newPatients = [...newPatients, defaultPatient()])}
     ><Fa icon={faPlus} /></button
   >
 {:catch error}
@@ -82,13 +82,12 @@
 
   .patients :global(tr > *) {
     padding: 0.5em;
-    /* white-space: nowrap; */
   }
 
   .patients thead {
     position: sticky;
     top: 1;
-    background-color: white;
+    background-color: aquamarine;
     box-shadow: 0 -1px var(--foreground), 0 1px var(--foreground);
   }
 </style>

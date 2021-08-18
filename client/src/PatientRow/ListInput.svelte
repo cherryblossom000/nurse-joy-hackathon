@@ -11,17 +11,25 @@
 <div class="inputs">
   {#each [...data.entries()] as [i, value]}
     <div>
-      <input
-        type="text"
-        on:change={({currentTarget}) => handleChange(currentTarget, i)}
-        {value}
-      />
-      <button on:click={() => (data = data.filter((_, j) => j !== i))}
-        ><Fa icon={faMinus} /></button
-      >
+      <ul
+        ><li>
+          <input
+            type="text"
+            on:change={({currentTarget}) => handleChange(currentTarget, i)}
+            {value}
+          />
+          <button
+            title="Delete"
+            on:click={() => (data = data.filter((_, j) => j !== i))}
+            ><Fa icon={faMinus} /></button
+          ></li
+        >
+      </ul>
     </div>
   {/each}
-  <button on:click={() => (data = [...data, ''])}><Fa icon={faPlus} /></button>
+  <button title="Add" on:click={() => (data = [...data, ''])}
+    ><Fa icon={faPlus} /></button
+  >
 </div>
 
 <style>

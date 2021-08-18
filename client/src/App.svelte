@@ -26,10 +26,6 @@
     padding: 1rem;
   }
 
-  :global(input) {
-    width: 5em;
-  }
-
   :global(button) {
     border: none;
     border-radius: 3px;
