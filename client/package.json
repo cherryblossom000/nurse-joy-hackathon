@@ -16,7 +16,7 @@
   "dependencies": {
     "@fontsource/inter": "^4.5.0",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@nurse-joy-hackathon/shared": "link:../shared",
+    "@nurse-joy-hackathon/shared": "*",
     "normalize.css": "^8.0.1",
     "svelte-fa": "^2.2.1"
   },

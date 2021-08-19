@@ -5,10 +5,15 @@
   "publishConfig": {
     "access": "restricted"
   },
+  "workspaces": [
+    "client",
+    "shared",
+    "server"
+  ],
   "type": "module",
   "scripts": {
-    "start": "pnpm -C server start",
-    "build": "pnpm m run build",
+    "start": "yarn --cwd server start",
+    "build": "yarn --cwd shared build && yarn --cwd client build && sed -i 's/\\* as t/t/' shared/dist/index.js && yarn --cwd server build",
     "watch": "pnpm m run watch",
     "lint": "eslint --max-warnings 0 --cache . --ext js,ts,svelte",
     "format": "prettier -w '**/*.{cjs,ts,svelte}'",
@@ -31,6 +36,7 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-svelte3": "^3.2.0",
     "eslint-plugin-unicorn": "^35.0.0",
+    "node": "16",
     "prettier": "^2.3.2",
     "prettier-plugin-svelte": "^2.3.1",
     "svelte": "^3.42.1",

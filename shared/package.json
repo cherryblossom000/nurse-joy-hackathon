@@ -4,7 +4,7 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc -b",
+    "build": "rm tsconfig.tsbuildinfo; tsc -b",
     "lint": "eslint --max-warnings 0 --cache . --ext ts",
     "format": "prettier -w --ignore-path ../.prettierignore '**/*.{cjs,ts,svelte}'"
   },
