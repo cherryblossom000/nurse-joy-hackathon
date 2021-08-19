@@ -1,5 +1,5 @@
 {
-  "name": "nurse-joy-hackathon-client",
+  "name": "@nurse-joy-hackathon/client",
   "version": "0.0.1",
   "publishConfig": {
     "access": "restricted"

@@ -1,5 +1,5 @@
 {
-  "name": "nurse-joy-hackathon-server",
+  "name": "@nurse-joy-hackathon/server",
   "version": "0.0.1",
   "private": true,
   "publishConfig": {
