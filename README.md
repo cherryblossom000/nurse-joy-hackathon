@@ -7,7 +7,7 @@
 - Node.js v16
 - pnpm v6
 
-`server/.env`:
+`.env`:
 
 ```sh
 DATABASE_URL=mongodb://localhost:27017
@@ -44,7 +44,7 @@ branch.
 
 This branch *should* work for Node.js v12...
 
-`server/.env`:
+`.env`:
 
 ```sh
 DATABASE_URL=mongodb://some-actual-mongodb-url
@@ -56,7 +56,8 @@ PASSWORD=some-password
 ```
 
 ```sh
+# Don't set NODE_ENV=production when doing yarn install!
 yarn install
 yarn build
-yarn start
+NODE_ENV=production yarn start
 ```
