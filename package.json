@@ -14,7 +14,7 @@
   "type": "module",
   "scripts": {
     "start": "yarn --cwd server start",
-    "build": "yarn --cwd shared build && yarn --cwd client build && sed -i 's/\\* as t/t/' shared/dist/index.js && yarn --cwd server build",
+    "build": "yarn --cwd shared build && yarn --cwd client build && sed -i 's/\\* as t/t/' node_modules/@nurse-joy-hackathon/shared/dist/index.js && yarn --cwd server build",
     "watch": "pnpm m run watch",
     "lint": "eslint --max-warnings 0 --cache . --ext js,ts,svelte",
     "format": "prettier -w '**/*.{cjs,ts,svelte}'",
@@ -23,9 +23,13 @@
   },
   "devDependencies": {
     "@cherryblossom/eslint-config": "15.0.0-beta.13",
+    "@koa/router": "^10.1.0",
+    "@nurse-joy-hackathon/shared": "file:shared",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.17",
     "@types/eslint": "^7.28.0",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
     "@typescript-eslint/parser": "^4.29.2",
+    "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-compat": "^3.12.0",
@@ -37,10 +41,22 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-svelte3": "^3.2.0",
     "eslint-plugin-unicorn": "^35.0.0",
+    "fp-ts": "^2.11.1",
+    "io-ts": "^2.2.16",
+    "koa": "^2.13.1",
+    "koa-basic-auth": "^4.0.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-logger": "^3.2.1",
+    "koa-static": "^5.0.0",
+    "mongodb": "^4.1.0",
     "node": "16",
     "prettier": "^2.3.2",
     "prettier-plugin-svelte": "^2.3.1",
     "svelte": "^3.42.1",
-    "typescript": "^4.3.5"
+    "svelte-preprocess": "^4.7.4",
+    "typescript": "^4.3.5",
+    "uuid": "^8.3.2",
+    "vite": "^2.5.0",
+    "vite-plugin-html": "^2.0.7"
   }
 }

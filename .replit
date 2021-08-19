@@ -1,2 +1,2 @@
 language = "nodejs"
-run = "yarn install && yarn build && yarn start"
+run = "yarn build && NODE_ENV=production yarn start"

@@ -3,6 +3,7 @@
 *.tsbuildinfo
 .env
 .pnpm-debug.log
+yarn-error.log
 node_modules/
 dist/
 /server/db/
