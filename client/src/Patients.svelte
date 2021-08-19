@@ -16,10 +16,6 @@
   }
 </script>
 
-<svelte:head>
-  <title>Palet Town Hopsital</title>
-</svelte:head>
-
 {#await patientsPromise then patients}
   <table class="patients">
     <thead>
