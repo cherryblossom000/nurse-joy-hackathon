@@ -18,7 +18,7 @@ PASSWORD=some-password
 
 ```sh
 pnpm install
-pnpm init-database
+pnpm init-db
 ```
 
 ## Building
@@ -26,13 +26,13 @@ pnpm init-database
 ```sh
 pnpm build
 # do these in different terminal sessions if you want because they both log stuff
-pnpm start-database & pnpm start
+pnpm start-db & pnpm start
 ```
 
 ## Preview with HMR
 
 ```sh
-pnpm watch & pnpm start-database & pnpm dev
+pnpm watch & pnpm start-db & pnpm dev
 ```
 
 Alternatively just use the VSCode watch tasks.
