@@ -17,7 +17,7 @@ import {PatientWithoutId} from '@nurse-joy-hackathon/shared'
 import type {AddressInfo} from 'node:net'
 import type {Patient} from '@nurse-joy-hackathon/shared'
 
-dotenv.config({path: new URL('../.env', import.meta.url).pathname})
+dotenv.config({path: new URL('../../.env', import.meta.url).pathname})
 
 const dev = process.env.NODE_ENV !== 'production'
 
