@@ -19,7 +19,8 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@nurse-joy-hackathon/shared": "link:../shared",
     "normalize.css": "^8.0.1",
-    "svelte-fa": "^2.2.1"
+    "svelte-fa": "^2.2.1",
+    "tslib": "^2.3.1"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.17",
