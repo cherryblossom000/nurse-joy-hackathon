@@ -37,4 +37,8 @@
     display: flex;
     flex-direction: column;
   }
+
+  input {
+    width: 6rem;
+  }
 </style>
