@@ -5,6 +5,7 @@
   "publishConfig": {
     "access": "restricted"
   },
+  "license": "MIT",
   "workspaces": [
     "client",
     "shared",
@@ -17,8 +18,8 @@
     "watch": "pnpm m run watch",
     "lint": "eslint --max-warnings 0 --cache . --ext js,ts,svelte",
     "format": "prettier -w '**/*.{cjs,ts,svelte}'",
-    "init-database": "mkdir db",
-    "start-datbase": "mongod --dbpath db"
+    "init-database": "pnpm -C server init-database",
+    "start-datbase": "pnpm -C server start-database"
   },
   "devDependencies": {
     "@cherryblossom/eslint-config": "15.0.0-beta.13",

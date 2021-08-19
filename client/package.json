@@ -5,6 +5,7 @@
     "access": "restricted"
   },
   "private": true,
+  "license": "MIT",
   "scripts": {
     "build": "vite build",
     "dev": "vite",

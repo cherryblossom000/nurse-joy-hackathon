@@ -5,6 +5,7 @@
   "publishConfig": {
     "access": "restricted"
   },
+  "license": "MIT",
   "type": "module",
   "engines": {
     "node": ">=12"
